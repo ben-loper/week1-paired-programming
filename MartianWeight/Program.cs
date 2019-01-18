@@ -22,7 +22,41 @@ namespace MartianWeight
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            double marsConversionValue = 0.378;
+
+            // Print the message "Enter a series of Earth weights (space-separated): 98 235 185" to the console
+            Console.WriteLine("Please enter a series of weights.");
+
+            // Assign the values entered into the numberString variable and remove the whitespaces
+            string numberString = Console.ReadLine();           
+            string[] numbers = numberString.Split(' ');
+
+            double[] earthWeights = new double[numbers.Length];
+
+            // Take each element of the string array and parse it and assign that value to the earthWeights array
+            for (int i = 0; i < numbers.Length; i++)
+            {                
+                earthWeights[i] = int.Parse(numbers[i]);
+                
+            }
+
+            Console.WriteLine();
+
+            int[] marsWeights = new int[earthWeights.Length];
+
+            // Take the value of each element in the earthWeights array
+            for (int i = 0; i < earthWeights.Length; i++)
+            {
+                //Multiply the element by the conversion rate, explicitly convert to an integer, and assign it to the marsWeight array
+                marsWeights[i] = (int)(earthWeights[i] * marsConversionValue);
+
+                //Print out the values and message that given element
+                Console.WriteLine($"{earthWeights[i]} lbs. on Earth, is {marsWeights[i]} on Mars.");                      
+            }
+
+            //Holds the program open
+            Console.ReadKey();
         }
     }
 }
+ 
